@@ -8,8 +8,6 @@ Off the top of your head, how many language models can you name other than
 OpenAI's, Anthropic's, X's, or Google's _flagship_ models? (In other words, other than GPT-*, Claude,
 Grok, or Gemini)
 
-(show each of the following one-by-one:)
-
 - gpt-oss (OpenAI open source)
 - Qwen (Alibaba)
 - Llama (Meta)
@@ -48,14 +46,13 @@ Grok, or Gemini)
 Ollama is great for experimentation, as it has a lot of sane defaults, and makes it easy to swap out models.
 
 - Install it
+- `ollama serve`
 - `ollama run qwen3:4b-instruct`
 - Chat away
 
 ### vLLM, SGLang
 
 For production deployments, you may want to seriously consider vLLM or SGLang.
-
-(beyond the scope of this presentation)
 
 ### llama.cpp
 
@@ -78,11 +75,18 @@ llama.cpp is what ollama and many other tools use under the hood. It works well 
 - CLI: OpenCode, Aider, Codex, Crush, Nanocoder, Goose, llm, mods
 - Desktop: Jan, GPT4All, LM Studio
 
-## The Hugging Face "Candy Store"
+## Quantization
+
+
+
+## Finding and Choosing Models
+
+### The Hugging Face "Candy Store"
 
 The Hugging Face Hub hosts millions of open source, downloadable models.
 
 huggingface.co
+
 
 ## Other Candy Stores
 
