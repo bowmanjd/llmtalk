@@ -2,40 +2,43 @@
 
 import torch
 
+# Our vocabulary: a=0, b=1, c=2
+VOCAB = "abc"
+
+weights = torch.tensor(
+	[
+		# 'a' 'b' 'c' | 'a' 'b' 'c'  (for 1st and 2nd letter)
+		[5.0, 0.0, 4.0, 5.0, 0.0, 4.0],  # predict 'a'
+		[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
+		[5.0, 5.0, 0.0, 4.0, 5.0, 5.0],  # predict 'c'
+	]
+)
+
 
 def tokenize(text):
-    """Split into tokens and represent as vector"""
-    # a = 0, b = 1, c = 2
-    tokens = ["abc".index(char) for char in text]
-    vector = torch.zeros(6)
-    # One-hot encode: first 3 dims for token 0, last 3 dims for token 1
-    vector[tokens[0]] = 1.0
-    vector[3 + tokens[1]] = 1.0
-    return vector
+	"""Convert 'ab' -> [1,0,0, 0,1,0]"""
+	indices = [VOCAB.index(c) for c in text]
+	vector = torch.zeros(6)
+	vector[indices[0]] = 1.0  # One-hot encode first char
+	vector[3 + indices[1]] = 1.0  # One-hot encode second char (offset by 3)
+	return vector
 
 
-def untokenize(vector):
-    """Convert vector back into text"""
-    return "".join("abc"[i] for i in vector.flatten())
+def infer(input_vector):
+	"""Predict the index of the next token from an input vector."""
+	# The core logic: multiply input by weights to get scores (logits)
+	logits = torch.matmul(weights, input_vector)
+	return torch.argmax(logits)
 
 
-def infer(vector):
-    return torch.argmax(torch.matmul(weights, vector))
-
-
-with torch.no_grad():
-    weights = torch.tensor(
-        [
-            [5.0, 0.0, 4.0, 5.0, 0.0, 4.0],  # logits for 'a'
-            [0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # logits for 'b'
-            [5.0, 4.0, 0.0, 4.0, 5.0, 0.0],  # logits for 'c'
-        ]
-    )
+def decode(predicted_index):
+	"""Convert a single index like 2 back to the character 'c'."""
+	return VOCAB[predicted_index.item()]
 
 
 if __name__ == "__main__":
-    while True:
-        text = input("Enter the first two letters: ")
-        vector = tokenize(text)
-        prediction = infer(vector)
-        print(untokenize(prediction))
+	while True:
+		text = input("Enter the first two letters: ")
+		vector = tokenize(text)
+		prediction = infer(vector)
+		print(decode(prediction))

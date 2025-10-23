@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg stroke-linecap="square" stroke-miterlimit="10" version="1.1" viewBox="0 0 384 192" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <clipPath id="clipPath10">
+   <path d="m0 0h384v192h-384z"/>
+  </clipPath>
+  <clipPath id="clipPath11">
+   <path d="m0 0h384v192h-384z"/>
+  </clipPath>
+  <clipPath id="clipPath12">
+   <path d="m0 0h384v192h-384z"/>
+  </clipPath>
+  <clipPath id="clipPath13">
+   <path d="m0 0h384v192h-384z"/>
+  </clipPath>
+ </defs>
+ <path d="m99.771 12.614h253.42v166.77h-253.42z" fill-opacity="0" fill-rule="evenodd"/>
+ <path d="m172.67 136.49h-58.875v-93.062h12.375v82.062h46.5zm71.25 0h-58.875v-93.062h12.375v82.062h46.5zm95.25 0h-12.375v-80.188l-25.875 54.562h-7.375l-25.688-54.562v80.188h-11.562v-93.062h16.875l24.812 51.812 24-51.812h17.188z" fill="#f3f3f3"/>
+ <path d="m58.467 134.82h1.8898v2.3307h-1.8898z" fill="#434343" fill-rule="evenodd"/>
+ <path d="m59.639 136h1.8898v2.3307h-1.8898z" fill="#434343" fill-rule="evenodd"/>
+ <g clip-path="url(#clipPath13)" filter="url(#shadowFilter-g31e21232314_0_21.1)">
+  <use transform="translate(0,2)" xlink:href="#g31e21232314_0_21.1"/>
+ </g>
+ <g id="g31e21232314_0_21.1">
+  <path d="m59.641 83.019v55.307l-27.654-55.307z" fill="#434343" fill-rule="evenodd"/>
+ </g>
+ <g clip-path="url(#clipPath12)" filter="url(#shadowFilter-g31e21232314_0_21.2)">
+  <use transform="translate(0,2)" xlink:href="#g31e21232314_0_21.2"/>
+ </g>
+ <g id="g31e21232314_0_21.2">
+  <path d="m59.64 138.33h21.73l18.654-70.386-25.575 13.462z" fill="#434343" fill-rule="evenodd"/>
+ </g>
+ <g clip-path="url(#clipPath11)" filter="url(#shadowFilter-g31e21232314_0_21.3)">
+  <use transform="translate(0,2)" xlink:href="#g31e21232314_0_21.3"/>
+ </g>
+ <g id="g31e21232314_0_21.3">
+  <path d="m58.465 81.843v55.307l-27.654-55.307z" fill="#fdb515" fill-rule="evenodd"/>
+ </g>
+ <g clip-path="url(#clipPath10)" filter="url(#shadowFilter-g31e21232314_0_21.4)">
+  <use transform="translate(0,2)" xlink:href="#g31e21232314_0_21.4"/>
+ </g>
+ <g id="g31e21232314_0_21.4">
+  <path d="m58.464 137.15h21.73l18.654-70.386-25.575 13.462z" fill="#30a2ff" fill-rule="evenodd"/>
+ </g>
+</svg>

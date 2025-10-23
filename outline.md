@@ -1,4 +1,4 @@
-# Going Small, Local, Different with LLMs
+# What are you Inferring? LLMs that are Small, Local, Different
 
 ## Title Slide
 
@@ -52,11 +52,9 @@ Ollama is great for experimentation, as it has a lot of sane defaults, and makes
 
 ### vLLM, SGLang
 
-For production deployments, you may want to seriously consider vLLM or SGLang.
+For production deployments in which VRAM is abundant, you may want to seriously consider vLLM, or SGLang.
 
 ### llama.cpp
-
-(svg picture)
 
 llama.cpp is what ollama and many other tools use under the hood. It works well with GPUs, and is also the best tool to use if you only have CPU.
 
@@ -77,7 +75,10 @@ llama.cpp is what ollama and many other tools use under the hood. It works well 
 
 ## Quantization
 
+### Quantization is Lossy Compression
 
+- Model weights that have had precision reduced from 32-bit or 16-bit floats to, say, 8-bit floats, 8-bit integers, or even 4-bit integers and smaller
+- With integers, they are dequantized back to floats when running the model, _with some loss of precision_ (rounding).
 
 ## Finding and Choosing Models
 
@@ -88,7 +89,7 @@ The Hugging Face Hub hosts millions of open source, downloadable models.
 huggingface.co
 
 
-## Other Candy Stores
+## Cloud inference providers
 
 - openrouter.ai/models (open and proprietary)
 - vercel.com/ai-gateway/models (open and proprietary)
