@@ -251,6 +251,24 @@ Tools like vLLM and SGLang are optimized for high-throughput serving. They use c
 -->
 
 ---
+layout: image-left
+image: mlx.png
+backgroundSize: contain
+---
+
+## On Apple Silicon
+
+```sh
+mlx_vlm.generate \
+--model mlx-community/Qwen3-VL-4B-Instruct-6bit \
+--prompt "Describe this image." \
+--image picture_of_an_apple.png
+```
+
+<!--
+-->
+
+---
 layout: image-right
 image: /llama-cpp.svg
 backgroundSize: contain
@@ -267,7 +285,7 @@ backgroundSize: contain
 1.  Install it from [github.com/ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)
 2.  Run the command-line interface, pulling a model directly from Hugging Face:
     ```bash
-    llama-cli -hf unsloth/Qwen2-7B-Instruct-GGUF:Q4_K_M
+    llama-cli -hf unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M
     ```
 3.  Chat away!
 
