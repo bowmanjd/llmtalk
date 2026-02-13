@@ -7,7 +7,7 @@ VOCAB = "abc"
 
 weights = torch.tensor(
 	[
-		# 'a' 'b' 'c' | 'a' 'b' 'c'  (for 1st and 2nd letter)
+		# 'a' 'b' 'c'  | 'a' 'b' 'c'  (for 1st and 2nd letter)
 		[5.0, 0.0, 4.0, 5.0, 0.0, 4.0],  # predict 'a'
 		[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
 		[5.0, 5.0, 0.0, 4.0, 5.0, 5.0],  # predict 'c'

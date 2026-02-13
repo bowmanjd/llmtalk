@@ -31,21 +31,40 @@ It is a pleasure to be with you all this evening.
 -->
 
 ---
+
+# How many large language models can you name?
+
+<v-clicks>
+
+- **GPT-5.2** (OpenAI)
+- **Claude Sonnet/Opus/Haiku 4.5** (Anthropic)
+- **Gemini 3 Flash/Pro** (Google)
+- **Grok 4.1** (xAI)
+
+</v-clicks>
+
+<!--
+On a piece of paper or in your head, take 20 seconds and name as many models that you can think of. Just tally them up on your fingers, quietly. Models or labs that you know the models come from... Need a hint? Time... I have a hunch that for most of us, we pretty easily named 1 or two of these proprietary models from big US-based labs.
+-->
+
+---
 layout: two-cols-header
 ---
 
-# How many large language models can you name?
+# Open models
 
 ::left::
 
 <v-clicks>
 
-- **Deepseek** (Deepseek AI)
-- **GLM** (Z.ai)
-- **Gemma** (Google)
-- **Granite** (IBM)
-- **Kimi K2** (Moonshot)
-- **LFM** (Liquid AI)
+- **Deepseek V3.2** (Deepseek AI)
+- **GLM 4.7** (Z.ai)
+- **Gemma 3 4/12/27B** (Google)
+- **Granite 4.0 Micro/Tiny/Small** (IBM)
+- **Kimi K2.5** (Moonshot AI)
+- **LFM 2.5-1.2B** (Liquid AI)
+- **Llama 4 Maverick** (Meta)
+- **MiniMax M2.1** (MiniMax)
 
 </v-clicks>
 
@@ -53,23 +72,21 @@ layout: two-cols-header
 
 <v-clicks>
 
-- **Llama** (Meta)
-- **Mistral** (Mistral AI)
-- **Nemotron** (Nvidia)
-- **Phi** (Microsoft)
-- **Qwen** (Alibaba)
+- **Mistral Large 3 2512** (Mistral AI)
+- **Nemotron 3 Nano 30B A3B** (Nvidia)
+- **Phi 4** (Microsoft)
+- **Qwen 3 235B A22B 2507** (Alibaba)
 - **gpt-oss** (OpenAI)
 
 </v-clicks>
 
 <!--
-On a piece of paper or in your head, take 20 seconds and name as many models that you can think of. Just tally them up on your fingers, quietly, and then we will see how we did.
 
-Who had at least two? three?
+I wonder if any of you had any open models in your list? Care to share what you thought of?
 
 Here are a few open ones. Open, as in, free to download the model weights and run inference yourself.
 
-For about a year, I have been strangely obsessed with alternate language models other than just the big name flagship models that make most news. I don't have one clear reason for this attraction, but I think this diversity and the portability both make this territory really fun to explore. It is simply fun to try the different models, and see what purposes they serve best.
+For about a year, I have been strangely obsessed with alternate language models other than just the big name flagship models that make most news. I don't have one clear reason for this attraction, but I think this diversity and the portability make this territory really fun to explore. It is simply fun to try the different models, and see what purposes they serve best.
 -->
 
 ---
@@ -79,7 +96,7 @@ backgroundSize: contain
 ---
 
 <!--
-The emperor has no clothes! This is that old Hans Christian Andersen story in which the vain emperor is conned into parading about in nothing, believing that he is wearing clothers, until a kid in the crowd says, "the emperor has no clothes!" which then causes the crowd to come to its senses as well.
+The emperor has no clothes! This is that old Hans Christian Andersen story in which the vain emperor is conned into parading about in nothing, believing that he is wearing clothes, until a kid in the crowd says, "the emperor has no clothes!" which then causes the crowd to come to its senses as well.
 
 I think that in the midst of all the AI hype and huckstering there is plenty of opportunity to point out that there are a lot of elaborate clothes everyone is marveling about and they just aren't real. The shallow religion of AGI hope, the ever-evolving landscape of buzzwords that themselves are so semantically diffused there good for not much other than exciting and belittling others. Even the term "Artifical Intelligence" seems like a misnomer and a load of human hubris. But after 75 years, I guess the name has stuck, so we'll use it.
 -->
@@ -211,7 +228,7 @@ See models at [ollama.com/search](https://ollama.com/search) (stick with 4b or s
 
 ---
 
-## Using ollama
+##
 
 1.  Install it from `ollama.com`
 2.  Start the server (usually runs automatically)
