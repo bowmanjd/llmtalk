@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="665.76416mm"
+   height="264.58334mm"
+   viewBox="0 0 665.76416 264.58334"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="mlx.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.27217886"
+     inkscape:cx="712.76661"
+     inkscape:cy="1315.3116"
+     inkscape:window-width="1878"
+     inkscape:window-height="1200"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="1322.6597"
+       y="1447.5775"
+       width="326.99088"
+       height="165.33246"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-138.56807,-13.597582)">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="font-size:9.33333px;font-family:'Iosevka Nerd Font';-inkscape-font-specification:'Iosevka Nerd Font';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);fill:#51a2da;stroke:#000000;stroke-width:0.5" />
+    <text
+       style="font-weight:bold;font-size:215.884px;font-family:'Arimo Nerd Font';-inkscape-font-specification:'Arimo Nerd Font, Bold';fill:#ffffff;stroke:#000000;stroke-width:0.179904"
+       transform="scale(0.90781666,1.101544)"
+       x="432.10913"
+       y="245.30858"
+       id="text5">M</text>
+    <text
+       style="font-weight:bold;font-size:215.884px;font-family:'Arimo Nerd Font';-inkscape-font-specification:'Arimo Nerd Font, Bold';fill:#ffffff;stroke:#000000;stroke-width:0.179904"
+       transform="scale(0.90781666,1.101544)"
+       x="611.9422"
+       y="245.30858"
+       id="text4">L</text>
+    <text
+       style="font-weight:bold;font-size:215.884px;font-family:'Arimo Nerd Font';-inkscape-font-specification:'Arimo Nerd Font, Bold';fill:#919191;fill-opacity:1;stroke:#000000;stroke-width:0.179904"
+       transform="scale(0.90781666,1.101544)"
+       x="743.81274"
+       y="245.30858"
+       id="text3">X</text>
+    <path
+       fill="#b3b3b3"
+       d="m 356.76104,219.78833 c -4.00129,9.24381 -8.73751,17.75268 -14.225,25.57562 -7.47998,10.66466 -13.6044,18.04664 -18.3243,22.14594 -7.31664,6.7287 -15.15591,10.17471 -23.55046,10.37069 -6.02644,0 -13.2941,-1.71485 -21.75397,-5.19351 -8.48764,-3.46236 -16.28771,-5.17718 -23.41982,-5.17718 -7.47997,0 -15.50215,1.71482 -24.08288,5.17718 -8.59381,3.47866 -15.51686,5.29151 -20.81,5.47116 -8.04995,0.34296 -16.07376,-3.20106 -24.08288,-10.64834 -5.11186,-4.4586 -11.50576,-12.10188 -19.16538,-22.92988 -8.21817,-11.56292 -14.97463,-24.97133 -20.26777,-40.2579 -5.66877,-16.51146 -8.51051,-32.5003 -8.51051,-47.97959 0,-17.73144 3.83144,-33.02455 11.50576,-45.84012 6.03134,-10.29393 14.05515,-18.414109 24.09758,-24.375225 10.04243,-5.961105 20.89329,-8.99882 32.5787,-9.193172 6.3939,0 14.77865,1.977781 25.19834,5.864754 10.3903,3.900035 17.06185,5.877819 19.98687,5.877819 2.18683,0 9.5982,-2.312591 22.16227,-6.923053 11.88139,-4.275669 21.90912,-6.046041 30.12402,-5.348674 22.26026,1.7965 38.98403,10.571583 50.106,26.380771 -19.90848,12.06268 -29.75656,28.95793 -29.56058,50.63187 0.17965,16.88219 6.30407,30.93081 18.34062,42.08545 5.45482,5.17717 11.54659,9.17846 18.32427,12.0202 -1.46984,4.2626 -3.02136,8.34556 -4.67088,12.26519 z M 305.70781,18.890757 c 0,13.232185 -4.83422,25.587041 -14.46998,37.022568 -11.62826,13.594604 -25.69321,21.450199 -40.94549,20.210619 -0.19435,-1.587455 -0.30703,-3.258196 -0.30703,-5.013862 0,-12.702887 5.52995,-26.297485 15.35027,-37.412914 4.9028,-5.627936 11.13829,-10.307489 18.69992,-14.040458 7.54529,-3.677272 14.68229,-5.710881 21.39466,-6.059128 0.19599,1.768938 0.27765,3.537984 0.27765,5.293003 z"
+       id="path1"
+       style="stroke-width:0.264583" />
+  </g>
+</svg>

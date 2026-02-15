@@ -58,13 +58,13 @@ layout: two-cols-header
 <v-clicks>
 
 - **Deepseek V3.2** (Deepseek AI)
-- **GLM 4.7** (Z.ai)
+- **GLM 5** (Z.ai)
 - **Gemma 3 4/12/27B** (Google)
 - **Granite 4.0 Micro/Tiny/Small** (IBM)
 - **Kimi K2.5** (Moonshot AI)
 - **LFM 2.5-1.2B** (Liquid AI)
 - **Llama 4 Maverick** (Meta)
-- **MiniMax M2.1** (MiniMax)
+- **MiniMax M2.5** (MiniMax)
 
 </v-clicks>
 
@@ -87,30 +87,16 @@ I wonder if any of you had any open models in your list? Care to share what you 
 Here are a few open ones. Open, as in, free to download the model weights and run inference yourself.
 
 For about a year, I have been strangely obsessed with alternate language models other than just the big name flagship models that make most news. I don't have one clear reason for this attraction, but I think this diversity and the portability make this territory really fun to explore. It is simply fun to try the different models, and see what purposes they serve best.
+
 -->
 
 ---
-layout: image
-image: /emperor.png
-backgroundSize: contain
----
 
-<!--
-The emperor has no clothes! This is that old Hans Christian Andersen story in which the vain emperor is conned into parading about in nothing, believing that he is wearing clothes, until a kid in the crowd says, "the emperor has no clothes!" which then causes the crowd to come to its senses as well.
+Related but not Synonymous:
 
-I think that in the midst of all the AI hype and huckstering there is plenty of opportunity to point out that there are a lot of elaborate clothes everyone is marveling about and they just aren't real. The shallow religion of AGI hope, the ever-evolving landscape of buzzwords that themselves are so semantically diffused there good for not much other than exciting and belittling others. Even the term "Artifical Intelligence" seems like a misnomer and a load of human hubris. But after 75 years, I guess the name has stuck, so we'll use it.
--->
-
----
-layout: image
-image: /useful-engines.png
-backgroundSize: contain
----
-
-<!--
-At the same time, there is something really useful here. Why spend so much energy imagining outlandish constructs of the future when what we have, even if AI development would stop and plateau today, is so rich with usability? We have tools that can parse and produce human language with imperfect yet impressive coherence. You might be surprised how much can be accomplished by even some of the smallest such engines. And you don't have to take someone else's word for it, you can download and try it yourself.
--->
-
+- Open models
+- Small models
+- Self-hostable models
 
 ---
 layout: image
@@ -120,33 +106,26 @@ backgroundSize: contain
 
 <!--
 
-I'd like to begin by remembering GPT-4. Luke Demi took the stage at CPOSC in 2023 and wowed us with a presentation that GPT-4 produced. And it was good! Do you remember that tipping point, when AI became good? That was GPT-4. And look at how it compares to even small models. I included large and proprietary models for reference. The open weights models are in blue. None of these except for gpt-oss have reasoning on.
+I'd like to begin by remembering GPT-4. Luke Demi took the stage at CPOSC in 2023 and wowed us with a presentation that GPT-4 produced. And it was good! Do you remember that tipping point, when AI became good? That was GPT-4. And look at how it compares to even small models. I included large and proprietary models for reference. The open weights models are in blue. None of these have reasoning on except for MiniMax, gpt-oss, and Nemotron.
 
-Most of the models shown here are small, open, and can be hosted locally. Why might that be appealing?
+Of the open models, some of these, towards the right, are self-hostable for any of us. Some, towards the left, are self-hostable if you want to buy a few Nvidia B200 GPUs. Each B200 costs a minimum of $30,000, so do the math. That sounds crazy, but there could be companies who want that level of control and privacy, and this would be an acceptable cost.
+
+There is a mid-range -- with a few thousand or even just a few hundred, you can run a smaller model that certainly isn't as capable as the large ones, but isn't puny either.
+
 -->
 
 ---
-layout: image-right
-image: /feather.svg
-backgroundSize: contain
----
 
-# The Benefits of being Small
+Related but not Synonymous:
 
-<v-clicks>
-
-- **Low latency**: Faster response time
-- **Can be purpose-built**: May be fine-tuned for specific tasks
-- **Low cost**: Cheaper to run and better for the environment.
-
-</v-clicks>
+- Open models
+- Small models
+- Self-hostable models
 
 <!--
-If you run a 1 trillion parameter model and a 600 million parameter model on the same hardware, the 600 million one is going to feel realtime by comparison.
 
-A smaller model can be trained to be better at a task than a larger behemoth. Re-ranking for instance. Huge models are great at taking a list, and a text, and ranking which items from the list are most relevant to the text. But the best re-rankers are a small fraction of the size of the behemoths.
+Today we are talking about these potentially overlapping qualities. If you want to self-host, then you need an open model, and probably a pretty small model. But just because a model is open doesn't mean you can self-host it realistically, and just because a model is small doesn't mean it is small enough to run in any usable way on your hardware. But there are small open models that any of you can self-host, and there are probably applications and activities in which even those very small models are desirable.
 
-Finally, they are much cheaper and more energy-efficient to run, whether you're paying a cloud inference provider or your own electricity bill.
 -->
 
 ---
@@ -168,7 +147,32 @@ backgroundSize: contain
 </v-clicks>
 
 <!--
-**"Own"-able**: You control the model,  **Studyable**: inspect, understand, trust,  Sustainable**: usable apart from a lab, **Shareable**: use and build upon, recommend to others without strings attached. **Customizable**: You can fine-tune it with your own data for specific tasks. I do not do this, and I am skeptical that fine-tuning is as easy and useful as what some think. More importantly, if you have a candy store of small models to choose from, you can easily swap them in and out
+**"Own"-able**: You control the model,  **Studyable**: inspect, understand, trust, consistent Sustainable**: usable apart from a lab, **Shareable**: use and build upon, recommend to others without strings attached. **Customizable**: You can fine-tune it with your own data for specific tasks. I do not do this, and I am skeptical that fine-tuning is as easy and useful as what some think. More importantly, if you have a candy store of small models to choose from (which you do on huggingface), you can easily swap them in and out
+-->
+
+---
+layout: image-right
+image: /feather.svg
+backgroundSize: contain
+---
+
+# The Benefits of being Small
+
+<v-clicks>
+
+- **Low latency**: Faster response time
+- **Can be purpose-built**: May be fine-tuned for specific tasks
+- **Low cost**: Cheaper to run and better for the environment.
+
+</v-clicks>
+
+<!--
+
+On the same hardware, a 32 billion parameter model will scream in comparison to a 1 trillion parameter model.
+
+A smaller model can be trained to be better at a task than a larger behemoth. Re-ranking for instance. Huge models are great at taking a list, and a text, and ranking which items from the list are most relevant to the text. But the best re-rankers are a small fraction of the size of the behemoths.
+
+Finally, they are much cheaper and more energy-efficient to run, whether you're paying a cloud inference provider or your own electricity bill.
 -->
 
 ---
@@ -197,11 +201,8 @@ So what happens when you combine small and open? You get the ability to run mode
 
 The most obvious benefit is privacy. If you're working with sensitive information, running a model locally means your data never gets sent to a third-party server.
 
-This also unlocks deep personalization. You can train a model on your personal emails or notes to create a truly personal assistant.
+But it is just fun and satisfying. And you don't even need the internet.
 
-It's also just a fantastic way to learn and have fun.
-
-And practically, it enables portability and edge computing. Imagine a powerful language model running on a device in a remote location with no internet. It's possible today.
 -->
 
 ---
@@ -211,7 +212,7 @@ layout: section
 # How Do I Run Models Locally?
 
 <!--
-Okay, I've hopefully convinced you that this is a cool and useful thing to do. So, how do you actually do it? Let's look at a few popular tools.
+A few popular tools for running models locally, along with my recommendation.
 -->
 
 ---
@@ -224,28 +225,7 @@ backgroundSize: contain
 
 Ollama is great for experimentation, as it has a lot of sane defaults and makes it easy to swap out models.
 
-See models at [ollama.com/search](https://ollama.com/search) (stick with 4b or smaller for now; try qwen3, gemma3n, gemma3, granite4, phi4-mini...)
-
----
-
-##
-
-1.  Install it from `ollama.com`
-2.  Start the server (usually runs automatically)
-    ```bash
-    ollama serve
-    ```
-3.  Run a model from the command line
-    ```bash
-	ollama run qwen3:4b-instruct
-    ```
-4.  Chat away!
-
-<!--
-The easiest entry point for most people is a tool called Ollama. It bundles everything you need into one simple package.
-
-You just install it, and it runs a server in the background. Then, from your terminal, you can type 'ollama run' followed by the name of a model. It will download the model if you don't have it and drop you right into a chat interface. It's the 'it just works' solution for local LLMs.
--->
+See models at [ollama.com/search](https://ollama.com/search) but warning: it is confusing
 
 ---
 layout: two-cols
@@ -268,19 +248,16 @@ Tools like vLLM and SGLang are optimized for high-throughput serving. They use c
 -->
 
 ---
-layout: image-left
-image: mlx.png
-backgroundSize: contain
----
-
-## On Apple Silicon
 
 ```sh
-mlx_vlm.generate \
---model mlx-community/Qwen3-VL-4B-Instruct-6bit \
---prompt "Describe this image." \
---image picture_of_an_apple.png
+# https://github.com/ml-explore/mlx-lm
+mlx.generate --prompt "Summarize the stochastic parrot paper"
+--model mlx-community/Qwen3-4B-Instruct-2507-mxfp8
 ```
+
+![mlx](/mlx-horizontal.svg)
+
+---
 
 <!--
 -->
@@ -293,7 +270,7 @@ backgroundSize: contain
 
 ## llama.cpp
 
-`llama.cpp` is what Ollama and many other tools use under the hood. It works well with GPUs, and is also the best tool to use if you only have CPU. It uses a quantization format called GGUF
+`llama.cpp` is what I use and recommend. Many other tools, such as Ollama, use under the hood. It works well with GPUs, and is also the best tool to use if you only have CPU. It uses a quantization format called GGUF
 
 ---
 
@@ -304,7 +281,8 @@ backgroundSize: contain
     ```bash
     llama-cli -hf unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M
     ```
-3.  Chat away!
+3. Web interface: once you have a model, just run `llama-server` then browse to localhost:8080
+4.  Chat away!
 
 <!--
 Now let's look at the engine that powers many of these tools: llama.cpp. This is a C++ library that is incredibly efficient.

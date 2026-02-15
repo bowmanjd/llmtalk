@@ -23,6 +23,10 @@ h2 {
 	line-height: 2.5rem !important;
 }
 
+code {
+	font-size: 1.25rem !important;
+}
+
 code.language-ansi {
 	white-space: pre-wrap;
 	overflow-wrap: anywhere;
