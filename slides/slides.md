@@ -48,23 +48,18 @@ On a piece of paper or in your head, take 20 seconds and name as many models tha
 -->
 
 ---
-layout: two-cols-header
+layout: two-cols
 ---
-
-# Open models
-
-::left::
 
 <v-clicks>
 
-- **Deepseek V3.2** (Deepseek AI)
-- **GLM 5** (Z.ai)
-- **Gemma 3 4/12/27B** (Google)
-- **Granite 4.0 Micro/Tiny/Small** (IBM)
-- **Kimi K2.5** (Moonshot AI)
-- **LFM 2.5-1.2B** (Liquid AI)
-- **Llama 4 Maverick** (Meta)
-- **MiniMax M2.5** (MiniMax)
+- Deepseek V3.2
+- GLM 5 (Z.ai)
+- Gemma 3 4/12/27B (Google)
+- Granite 4.0 Micro/Tiny/Small (IBM)
+- Kimi K2.5 (Moonshot AI)
+- LFM 2.5-1.2B (Liquid AI)
+- Llama 4 Maverick (Meta)
 
 </v-clicks>
 
@@ -72,11 +67,13 @@ layout: two-cols-header
 
 <v-clicks>
 
-- **Mistral Large 3 2512** (Mistral AI)
-- **Nemotron 3 Nano 30B A3B** (Nvidia)
-- **Phi 4** (Microsoft)
-- **Qwen 3 235B A22B 2507** (Alibaba)
-- **gpt-oss** (OpenAI)
+- MiniMax M2.5
+- Mistral Large 3 2512
+- Nanbeige 4.1 3B
+- Nemotron 3 Nano 30B A3B (Nvidia)
+- Phi 4 (Microsoft)
+- Qwen 3 235B A22B 2507 (Alibaba)
+- gpt-oss (OpenAI)
 
 </v-clicks>
 
@@ -89,14 +86,6 @@ Here are a few open ones. Open, as in, free to download the model weights and ru
 For about a year, I have been strangely obsessed with alternate language models other than just the big name flagship models that make most news. I don't have one clear reason for this attraction, but I think this diversity and the portability make this territory really fun to explore. It is simply fun to try the different models, and see what purposes they serve best.
 
 -->
-
----
-
-Related but not Synonymous:
-
-- Open models
-- Small models
-- Self-hostable models
 
 ---
 layout: image
@@ -116,7 +105,7 @@ There is a mid-range -- with a few thousand or even just a few hundred, you can 
 
 ---
 
-Related but not Synonymous:
+Related but not Equal:
 
 - Open models
 - Small models
@@ -129,7 +118,7 @@ Today we are talking about these potentially overlapping qualities. If you want 
 -->
 
 ---
-layout: image-left
+layout: image-right
 image: /open-door.svg
 backgroundSize: contain
 ---
@@ -151,7 +140,7 @@ backgroundSize: contain
 -->
 
 ---
-layout: image-right
+layout: image-left
 image: /feather.svg
 backgroundSize: contain
 ---
@@ -228,6 +217,19 @@ Ollama is great for experimentation, as it has a lot of sane defaults and makes 
 See models at [ollama.com/search](https://ollama.com/search) but warning: it is confusing
 
 ---
+layout: image-left
+image: /jan.png
+backgroundSize: contain
+---
+
+# Desktop apps
+
+- [LM Studio](https://lmstudio.ai/)
+- [Jan](https://www.jan.ai/)
+- [GPT4All](https://www.nomic.ai/gpt4all)
+- [AnythingLLM](https://anythingllm.com/)
+
+---
 layout: two-cols
 ---
 
@@ -258,19 +260,14 @@ mlx.generate --prompt "Summarize the stochastic parrot paper"
 ![mlx](/mlx-horizontal.svg)
 
 ---
-
-<!--
--->
-
----
-layout: image-right
+layout: image-left
 image: /llama-cpp.svg
 backgroundSize: contain
 ---
 
 ## llama.cpp
 
-`llama.cpp` is what I use and recommend. Many other tools, such as Ollama, use under the hood. It works well with GPUs, and is also the best tool to use if you only have CPU. It uses a quantization format called GGUF
+I recomend `llama.cpp`. It works well with GPUs, and is also the best tool to use if you only have CPU. It uses a quantization format called GGUF.
 
 ---
 
@@ -279,7 +276,8 @@ backgroundSize: contain
 1.  Install it from [github.com/ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)
 2.  Run the command-line interface, pulling a model directly from Hugging Face:
     ```bash
-    llama-cli -hf unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M
+    llama-cli -hf unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M \
+		      -p "Is there a seahorse emoji?"
     ```
 3. Web interface: once you have a model, just run `llama-server` then browse to localhost:8080
 4.  Chat away!
@@ -293,82 +291,75 @@ Here, we're using its command-line tool to download a specific model file from H
 -->
 
 ---
-layout: image-left
-image: /llama-cpp-logo.svg
-backgroundSize: contain
----
 
-### Serving with `llama.cpp`
+> Is there a seahorse emoji?
 
-`llama.cpp` works best as a server. You can then connect to its OpenAI-like API with a client of your choice.
+Yes, there is a seahorse emoji. It is represented by 🐙, which is the seahorse emoji...
 
-```sh
-llama-server \
--hf unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M
-```
-<!--
-<SlidevVideo v-click autoplay autoreset='click'>
-  <source src="/videos/llama-server-demo.webm" type="video/webm" />
-</SlidevVideo>
--->
+> Really!? 🐙 is the *seahorse* emoji?
+
+You're absolutely right! 🐙 is indeed the seahorse emoji... The emoji was introduced in Unicode and is widely used...
+
+So yes—🦞 is the seahorse emoji! 🐙✨ 😄
 
 <!--
-The real power of llama.cpp, much like Ollama, is running it as a server. You start the server process, pointing it at your model file.
-
-It then exposes an API that is compatible with OpenAI's API. This is a game-changer. It means that any of the hundreds of tools and libraries designed to talk to GPT can be pointed at your local model with just a one-line change.
-
-Here's a quick demo of what that looks like. You see the server starting up, and now it's ready to accept requests.
+To start out, I recommend giving Qwen 3 4B Instruct a try. It is small enough to run on your laptop, even if you don't have a GPU. Might even run on your phone. This was not its best moment...
 -->
 
 ---
 layout: two-cols
 ---
 
-### Clients
+## Web Clients
 
-Once you have a server running, you can connect with any client.
-
-<div class="pt-4">
-
-#### Web
+- llama.cpp's `llama-server`
 - Open-WebUI
 - LibreChat
 
-#### Desktop
-- Jan
-- GPT4All
-- LM Studio
-
-</div>
-
 ::right::
 
-### CLI Clients
+## CLI Clients
 
 - OpenCode
-- Aider
+- Pi
 - Codex
-- Crush
-- Nanocoder
-- Goose
-- `llm`
-- `mods`
+- Claude Code (with some help)
+- Aider
 
 ![Aider Logo](/opencode.svg){style="height: 100px; margin-top: 2rem"}
 
 <!--
+
+Once you have a server running, you can connect with any client.
 And because these servers use a standard, OpenAI-compatible API, you have a massive ecosystem of clients to choose from.
 
-If you want a web interface similar to ChatGPT, you can use Open-WebUI.
-If you prefer a polished desktop app, Jan or LM Studio are great choices.
-And if you're a command-line person like me, there are amazing tools like Aider for pair-programming with your local AI. The choice is yours.
+-->
+
+---
+layout: image
+image: /open-webui.png
+backgroundSize: contain
+---
+
+<!--
+This is Open-WebUI, running in our basement
+-->
+
+---
+layout: image
+image: /llama-server.png
+backgroundSize: contain
+---
+
+<!--
+This is llama.cpp's llama-server, running locally on my laptop
 -->
 
 ---
 layout: section
 ---
 
-# Quantization
+# Model selection
 
 <!--
 You may have noticed that weird `Q4_K_M` in the model name earlier. That brings us to a key concept that makes all of this possible on consumer hardware: Quantization.
