@@ -230,12 +230,26 @@ backgroundSize: contain
 - [AnythingLLM](https://anythingllm.com/)
 
 ---
+layout: image-right
+image: /apollo.png
+backgroundSize: contain
+---
+
+# Mobile
+
+- [Google Edge AI Gallery](https://github.com/google-ai-edge/gallery)
+- [PocketPal](https://github.com/a-ghorbani/pocketpal-ai)
+- [MNN Chat](https://github.com/alibaba/MNN) by Alibaba
+- [Lemonade](https://github.com/lemonade-sdk/lemonade/)
+- [Apollo](https://www.liquid.ai/apollo) by Liquid AI
+
+---
 layout: two-cols
 ---
 
 ## vLLM, SGLang
 
-For production deployments in which VRAM is abundant, you may want to seriously consider vLLM or SGLang.
+For production deployments in which VRAM is abundant and you have many users, you may want to seriously consider vLLM or SGLang.
 
 ::right::
 
@@ -244,20 +258,28 @@ For production deployments in which VRAM is abundant, you may want to seriously 
 ![SGLang](/sglang.svg){style="height:100px"}
 
 <!--
-When you move from experimenting on your laptop to a serious production environment with powerful GPUs, you'll want more performance.
+-->
 
-Tools like vLLM and SGLang are optimized for high-throughput serving. They use clever techniques like paged attention to serve many users at once from a single GPU, maximizing your hardware's potential. These are the tools you'd use to build your own AI-powered application at scale.
+---
+layout: image
+image: /mlx.svg
+backgroundSize: contain
+---
+
+<!--
+MLX for Apple Silicon
 -->
 
 ---
 
 ```sh
 # https://github.com/ml-explore/mlx-lm
-mlx.generate --prompt "Summarize the stochastic parrot paper"
---model mlx-community/Qwen3-4B-Instruct-2507-mxfp8
+mlx.generate \
+--prompt \
+"Summarize the stochastic parrot paper" \
+--model \
+mlx-community/Qwen3-4B-Instruct-2507-mxfp8
 ```
-
-![mlx](/mlx-horizontal.svg)
 
 ---
 layout: image-left
@@ -275,10 +297,12 @@ I recomend `llama.cpp`. It works well with GPUs, and is also the best tool to us
 
 1.  Install it from [github.com/ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)
 2.  Run the command-line interface, pulling a model directly from Hugging Face:
-    ```bash
-    llama-cli -hf unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M \
-		      -p "Is there a seahorse emoji?"
-    ```
+```bash
+llama-cli -hf \
+unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M \
+-p "Is there a seahorse emoji?"
+```
+
 3. Web interface: once you have a model, just run `llama-server` then browse to localhost:8080
 4.  Chat away!
 
@@ -312,7 +336,7 @@ layout: two-cols
 
 ## Web Clients
 
-- llama.cpp's `llama-server`
+- `llama-server` (llama.cpp)
 - Open-WebUI
 - LibreChat
 
@@ -331,7 +355,8 @@ layout: two-cols
 <!--
 
 Once you have a server running, you can connect with any client.
-And because these servers use a standard, OpenAI-compatible API, you have a massive ecosystem of clients to choose from.
+
+And because these servers use a standard, OpenAI-compatible API, you have a massive ecosystem of clients to choose from. These are just a few.
 
 -->
 
@@ -361,9 +386,81 @@ layout: section
 
 # Model selection
 
+---
+layout: image-right
+image: /hf-models.png
+backgroundSize: contain
+---
+
+## Hugging Face
+
+The Open Model Store
+
+[hf.co](https://hf.co)
+
 <!--
-You may have noticed that weird `Q4_K_M` in the model name earlier. That brings us to a key concept that makes all of this possible on consumer hardware: Quantization.
+In my hometown there was this variety store called Glen's Fair Priced Store. It had a hard to define range of goods. Pro photographers went there to get their equipment, as did kids to find halloween costumes. There were layers upon layers of things for sale on the shelves. You had to move things around to even figure out what was there, and then you still might not be sure what you were looking at. You have probably walked into wonderful stores like this. Now imagine such a store, except almost everything is free. That is Hugging Face. Scholarly papers, models, information about models, even inference (costs associated). For today's discussion, let's just focus on downloadable model weights
 -->
+
+---
+
+## So much in a name...
+
+<v-clicks>
+
+- `google/gemma-3n-E2B-it-litert-lm`
+- `Qwen/Qwen3-VL-8B-Instruct-GGUF`
+- `unsloth/GLM-4.7-Flash-REAP-23B-A3B-GGUF`
+- `mradermacher/Qwen3-Coder-30B-A3B-Instruct-i1-GGUF`
+
+</v-clicks>
+
+<!--
+I admit the naming can be intimidating. Especially when you realize that most every segment in the name matters. Let me try to read these in English... Gemma 3n from Google, 2 billion active parameters at a time, instruction tuned, built with LiteRT so that devices like newer Android phones can enjoy accelerated inference. An 8 billion Qwen 3 model, provided by the lab itself, instruct tuned, packaged in GGUF file format, and multi-modal -- this is a vision model able to take a picture as input and tell you that it is a picture of a shiny red apple. GLM 4.7 Flash (not to be confused with the much larger GLM 4.7), pruned by Cerebras to have 23 billion parameters total, with only 3 billion active at a time, presented by the very popular unsloth folks. And Qwen 3 Coder, 30 billion parameters total, only 3 billion of which are active, instruction trained, dynamically quantized, in GGUF file format, packaged by the prolific mradermacher.
+-->
+
+---
+layout: image-right
+image: /hf-community.png
+backgroundSize: contain
+---
+
+## HF Communities
+
+- unsloth
+- mlx-community
+- litert-community
+- mradermacher
+- bartowski
+- Mungert
+
+<!--
+The first part of the model name is the community on Hugging Face. This is similar to an organization on Github. Just because you see a model that looks like what you want -- don't necessarily trust it. You will find that certain people release more reliable packages and quants than others. Here are some I am familiar with.
+-->
+
+---
+layout: image-left
+image: /hf-libraries.png
+backgroundSize: contain
+---
+
+# Filter by Library
+
+- GGUF for llama.cpp
+- MLX for mlx-lm (Apple Silicon)
+- LiteRT (Android/Google acceleration)
+
+<!--
+There are many ways of packaging models. A "library" on HF refers to the ML framework or tooling integration that a model's files are designed to work with.
+-->
+
+---
+
+## Parameters
+
+The learned weights and biases that define how the model processes language, the number of "dials and switches" tuned during training to determine the weight of influence between input and output token. How likely is "happy" to be followed by "birthday"?
+
+More parameters = bigger, smarter, slower, more consumptive.
 
 ---
 layout: image-right
@@ -373,7 +470,6 @@ backgroundSize: contain
 
 ## Quantization is Lossy Compression
 
-Model weights that have had precision reduced from 32-bit or 16-bit floats to, say, 8-bit, 4-bit, or even smaller integers.
 
 ````md magic-move
 ```text
@@ -391,9 +487,11 @@ INT4 Weight: 0.8125
 ```
 ````
 
-With integers, they are dequantized back to floats when running the model, *with some loss of precision* (rounding).
+Integers are dequantized back to floats *with some loss of precision* (rounding).
 
 <!--
+Model weights that have had precision reduced from 32-bit or 16-bit floats to, say, 8-bit, 4-bit, or even smaller integers.
+
 Think of quantization as lossy compression for AI models, like converting a massive WAV audio file to a much smaller MP3.
 
 The original model weights are stored as high-precision numbers, like 16-bit floating points. Quantization converts them to lower-precision numbers, like 4-bit integers.
@@ -409,28 +507,6 @@ layout: section
 
 <!--
 Okay, so you have the tools, you understand the basics of quantization. Now for the fun part: where do you find all these models?
--->
-
----
-layout: image
-image: /screenshots/huggingface-hub.png
-backgroundSize: cover
----
-
-<div class="absolute bottom-10 left-10 p-4 bg-black bg-opacity-50 rounded">
-
-## The Hugging Face "Candy Store"
-
-The Hugging Face Hub hosts millions of open source, downloadable models.
-
-[huggingface.co/models](https://huggingface.co/models)
-
-</div>
-
-<!--
-The main place everyone goes is the Hugging Face Hub. It's like a giant GitHub for AI.
-
-You can find models, datasets, and even demo applications. There are leaderboards to compare model performance, and each model has a "model card" that explains what it is, how it was trained, and how to use it. It is an indispensable resource for the entire open-source AI community.
 -->
 
 ---

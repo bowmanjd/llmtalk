@@ -1,3 +1,8 @@
+:root {
+  --slidev-code-font-size: 1.25rem;
+  --slidev-code-line-height: 1.5rem;
+}
+
 body,
 li,
 p {
@@ -23,8 +28,8 @@ h2 {
 	line-height: 2.5rem !important;
 }
 
-code {
-	font-size: 1.25rem !important;
+code, pre, .slidev-code-wrapper {
+	font-size: 1.75rem !important;
 }
 
 code.language-ansi {
