@@ -19,8 +19,8 @@ def tokenize(text):
 	"""Convert 'ab' -> [1,0,0, 0,1,0]"""
 	indices = [VOCAB.index(c) for c in text]
 	vector = torch.zeros(6)
-	vector[indices[0]] = 1.0  # One-hot encode first char
-	vector[3 + indices[1]] = 1.0  # One-hot encode second char (offset by 3)
+	vector[indices[0]] = 1.0  # encode first char
+	vector[3 + indices[1]] = 1.0  # encode second char (offset by 3)
 	return vector
 
 

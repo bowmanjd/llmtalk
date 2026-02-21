@@ -28,10 +28,6 @@ h2 {
 	line-height: 2.5rem !important;
 }
 
-code, pre, .slidev-code-wrapper {
-	font-size: 1.75rem !important;
-}
-
 code.language-ansi {
 	white-space: pre-wrap;
 	overflow-wrap: anywhere;

@@ -458,9 +458,187 @@ There are many ways of packaging models. A "library" on HF refers to the ML fram
 
 ## Parameters
 
+
 The learned weights and biases that define how the model processes language, the number of "dials and switches" tuned during training to determine the weight of influence between input and output token. How likely is "happy" to be followed by "birthday"?
 
-More parameters = bigger, smarter, slower, more consumptive.
+---
+
+```python
+# Our vocabulary: a=0, b=1, c=2
+VOCAB = "abc"
+
+def tokenize(text):
+	"""Convert 'ab' -> [1,0,0, 0,1,0]"""
+	indices = [VOCAB.index(c) for c in text]
+	vector = torch.zeros(6)
+	vector[indices[0]] = 1.0  # encode first char
+	vector[3 + indices[1]] = 1.0  # encode second char (offset by 3)
+	return vector
+
+def decode(predicted_index):
+	"""Convert a single index like 2 back to the character 'c'."""
+	return VOCAB[predicted_index.item()]
+```
+
+---
+
+```python
+import torch
+weights = torch.tensor(
+	[
+		# 'a' 'b' 'c'  | 'a' 'b' 'c'  (for 1st and 2nd letter)
+		[5.0, 0.0, 4.0, 5.0, 0.0, 4.0],  # predict 'a'
+		[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
+		[5.0, 5.0, 0.0, 4.0, 5.0, 5.0],  # predict 'c'
+	]
+)
+def infer(input_vector):
+	"""Predict the index of the next token from an input vector."""
+	# multiply input by weights to get scores (logits)
+	logits = torch.matmul(weights, input_vector)
+	return torch.argmax(logits)
+```
+
+---
+
+```python
+if __name__ == "__main__":
+	while True:
+		text = input("Enter the first two letters: ")
+		vector = tokenize(text)
+		prediction = infer(vector)
+		print(decode(prediction))
+```
+
+---
+layout: image
+image: /machine_learning.png
+backgroundSize: contain
+---
+
+<!-- The pile gets soaked with data and starts to get mushy over time, so it's technically recurrent. -->
+
+---
+
+````md magic-move
+```python
+# With the weights all equal, prediction would be random
+[
+	# a    b    c ,  a    b    c
+	[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # predict 'a'
+	[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # predict 'b'
+	[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # predict 'c'
+]
+```
+
+```python {2,6}
+[
+# ab ⇒ c
+	# a    b    c ,  a    b    c
+	[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # predict 'a'
+	[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # predict 'b'
+	[5.0, 0.0, 0.0, 0.0, 5.0, 0.0],  # predict 'c'
+]
+```
+
+```python {2,4}
+[
+# aa ⇒ a
+	# a    b    c ,  a    b    c
+	[5.0, 0.0, 0.0, 5.0, 0.0, 0.0],  # predict 'a'
+	[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],  # predict 'b'
+	[5.0, 0.0, 0.0, 0.0, 5.0, 0.0],  # predict 'c'
+]
+```
+
+```python {2,5}
+[
+# ca ⇒ b
+	# a    b    c ,  a    b    c
+	[5.0, 0.0, 0.0, 5.0, 0.0, 0.0],  # predict 'a'
+	[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
+	[5.0, 0.0, 0.0, 0.0, 5.0, 0.0],  # predict 'c'
+]
+```
+
+```python {2,6}
+[
+# bb ⇒ c
+	# a    b    c ,  a    b    c
+	[5.0, 0.0, 0.0, 5.0, 0.0, 0.0],  # predict 'a'
+	[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
+	[5.0, 5.0, 0.0, 0.0, 5.0, 0.0],  # predict 'c'
+]
+```
+
+```python {2,4}
+[
+# cc ⇒ a
+	# a    b    c ,  a    b    c
+	[5.0, 0.0, 4.0, 5.0, 0.0, 4.0],  # predict 'a'
+	[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
+	[5.0, 5.0, 0.0, 0.0, 5.0, 5.0],  # predict 'c'
+]
+```
+
+```python {2,6}
+[
+# bc ⇒ c
+	# a    b    c ,  a    b    c
+	[5.0, 0.0, 0.0, 5.0, 0.0, 0.0],  # predict 'a'
+	[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],  # predict 'b'
+	[5.0, 5.0, 0.0, 0.0, 5.0, 5.0],  # predict 'c'
+]
+```
+````
+
+---
+
+<SlidevVideo v-click autoplay autoreset='click'>
+  <source src="/llm.webm" type="video/webm" />
+</SlidevVideo>
+
+<!--
+Even short words and abbreviations are a struggle sometimes, so I made this small language model to help me remember the third letter of so many things. First, just the general alphabet... Then I wanted to send a note and blind copy someone -- how do you spell that... my car was broken down and I need to call that roadside assistance organization... I wanted to ask them if my car battery had sufficient cold cranking... Maybe I should just call a taxi, but how do you spell it... I want to listen to british radio, and what's that network called...
+
+And there you have it: artificial general intelligence! We have arrived.
+-->
+
+---
+
+## Parameters, Weights
+
+```python
+		[5.0, 0.0, 4.0, 5.0, 0.0, 4.0],
+		[0.0, 0.0, 5.0, 5.0, 0.0, 0.0],
+		[5.0, 5.0, 0.0, 4.0, 5.0, 5.0],
+```
+
+- An 18 parameter model (18 adjustable values)
+- These weights are what you download
+- Smallest usable model: 270M parameters
+- Largest I can run on my hardware: 30B parameters
+- Good size for a laptop with 16GB RAM: 4B parameters
+- Claude, GPT, Grok are likely multi-trillion parameters
+
+---
+
+## More parameters
+
+- bigger
+- smarter
+- slower
+- more consumptive
+
+---
+
+## Less parameters
+
+- smaller
+- more simplistic, hallucinating
+- less world knowledge
+- faster
+- leaner, energy efficient
 
 ---
 layout: image-right
