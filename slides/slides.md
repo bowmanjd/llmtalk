@@ -37,8 +37,8 @@ It is a pleasure to be with you all this evening.
 <v-clicks>
 
 - **GPT-5.2** (OpenAI)
-- **Claude Sonnet/Opus/Haiku 4.5** (Anthropic)
-- **Gemini 3 Flash/Pro** (Google)
+- **Claude Sonnet/Opus/Haiku 4.5/4.6** (Anthropic)
+- **Gemini 3 Flash, 3.1 Pro** (Google)
 - **Grok 4.1** (xAI)
 
 </v-clicks>
@@ -72,7 +72,7 @@ layout: two-cols
 - Nanbeige 4.1 3B
 - Nemotron 3 Nano 30B A3B (Nvidia)
 - Phi 4 (Microsoft)
-- Qwen 3 235B A22B 2507 (Alibaba)
+- Qwen3.5 397B A17B (Alibaba)
 - gpt-oss (OpenAI)
 
 </v-clicks>
@@ -127,16 +127,17 @@ backgroundSize: contain
 
 <v-clicks>
 
-- **"Own"-able**
-- **Studyable**
-- **Sustainable**
-- **Shareable**
-- **Customizable**
+- "Own"-able
+- Studyable
+- Sustainable
+- Shareable
+- Verifiable
+- Customizable
 
 </v-clicks>
 
 <!--
-**"Own"-able**: You control the model,  **Studyable**: inspect, understand, trust, consistent Sustainable**: usable apart from a lab, **Shareable**: use and build upon, recommend to others without strings attached. **Customizable**: You can fine-tune it with your own data for specific tasks. I do not do this, and I am skeptical that fine-tuning is as easy and useful as what some think. More importantly, if you have a candy store of small models to choose from (which you do on huggingface), you can easily swap them in and out
+"Own"-able: You control the model,  Studyable: inspect, understand, trust, consistent Sustainable: usable apart from a lab, Shareable: use and build upon, recommend to others without strings attached. Verifiable: you know what model you have and whether it is changing or not, and don't have to 2nd-guess if the provider has nerfed it or swapped it out on you. Customizable: You can fine-tune it with your own data for specific tasks. I do not do this, and I am skeptical that fine-tuning is as easy and useful as what some think. But you can at least choose a model that fits your particular need, if you have a candy store of small models to choose from (which you do on huggingface), you can easily swap them in and out
 -->
 
 ---
@@ -195,6 +196,16 @@ But it is just fun and satisfying. And you don't even need the internet.
 -->
 
 ---
+layout: center
+---
+
+Right-sizing models{.biggie}
+
+<!--
+Last week I decided it was high time I finish a long-standing task of migrating blog platforms -- but the URLs didn't match. And it wasn't just something I could write a script to do, because while the URLs matched titles semantically, and strict string equality or even regular expressions weren't going to cut it. So, I thought, an LLM could do this easily! I used an agentic tool with Claude Opus 4.6, gave it a 3 sentence prompt, and done without a flaw. But then I wondered if I could use smaller models... Tried with Qwen Coder 30b and it took longer, and few more turns, but got the job done (python scripts everywhere). Then went to local models, another Qwen Coder 30b, and even got Qwen3-4B to do it! It was a bit of a lesson -- do I always need the largest, best model?
+-->
+
+---
 layout: section
 ---
 
@@ -229,6 +240,10 @@ backgroundSize: contain
 - [GPT4All](https://www.nomic.ai/gpt4all)
 - [AnythingLLM](https://anythingllm.com/)
 
+<!--
+I don't generally feel the need to add another desktop app to my system, but people do love their LM Studio -- a very intuitive and fast way to work with local models. If you like open source, the other three are good options.
+-->
+
 ---
 layout: image-right
 image: /apollo.png
@@ -243,13 +258,17 @@ backgroundSize: contain
 - [Lemonade](https://github.com/lemonade-sdk/lemonade/)
 - [Apollo](https://www.liquid.ai/apollo) by Liquid AI
 
+<!--
+Running models locally on your phone is tricky. I have been impressed with Google Edge AI Gallery. It uses hardware acceleration. At least on my phone, though, the models have to be exceedingly small.
+-->
+
 ---
 layout: two-cols
 ---
 
 ## vLLM, SGLang
 
-For production deployments in which VRAM is abundant and you have many users, you may want to seriously consider vLLM or SGLang.
+For production deployments in which VRAM is abundant and you have many users, you may want to seriously consider the well-trusted vLLM or the relative newcomer SGLang.
 
 ::right::
 
@@ -267,7 +286,7 @@ backgroundSize: contain
 ---
 
 <!--
-MLX for Apple Silicon
+MLX for Apple Silicon -- I am about to recommend llama.cpp for everything, but I will say, in my testing, if you want raw tokens per second, MLX is faster than llama.cpp, even thought llama.cpp does have Metal support. Maybe I wasn't holding it right, but the Internet would suggest it is something to consider.
 -->
 
 ---
@@ -307,11 +326,8 @@ unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M \
 4.  Chat away!
 
 <!--
-Now let's look at the engine that powers many of these tools: llama.cpp. This is a C++ library that is incredibly efficient.
 
-While Ollama is easier for beginners, llama.cpp gives you more direct control. It's particularly amazing because it's highly optimized for running on CPUs. So even if you don't have a fancy GPU, you can still run some very capable models.
-
-Here, we're using its command-line tool to download a specific model file from Hugging Face and run it directly.
+I like llama.cpp because it is fast, optimized for CPU only, gives you direct control. It is the engine that is hiding behind tools like Ollama or LM Studio.
 -->
 
 ---
@@ -614,12 +630,12 @@ And there you have it: artificial general intelligence! We have arrived.
 		[5.0, 5.0, 0.0, 4.0, 5.0, 5.0],
 ```
 
-- An 18 parameter model (18 adjustable values)
-- These weights are what you download
-- Smallest usable model: 270M parameters
+- Above is an 18 parameter model (18 adjustable values)
+- These are "the model weights"
+- Smallest model I have used: 270M parameters
 - Largest I can run on my hardware: 30B parameters
 - Good size for a laptop with 16GB RAM: 4B parameters
-- Claude, GPT, Grok are likely multi-trillion parameters
+- Flagship proprietary models are likely in trillions
 
 ---
 
@@ -655,17 +671,20 @@ FP16 Weight: 0.82470703125
 ```
 
 ```text
+FP16 Weight: 0.82470703125
 INT8 Weight: 0.828125
 (Stored as 106)
 ```
 
 ```text
+FP16 Weight: 0.82470703125
+INT8 Weight: 0.828125
 INT4 Weight: 0.8125
 (Stored as 13)
 ```
 ````
 
-Integers are dequantized back to floats *with some loss of precision* (rounding).
+Integers are dequantized back to floats with some loss of precision (rounding).
 
 <!--
 Model weights that have had precision reduced from 32-bit or 16-bit floats to, say, 8-bit, 4-bit, or even smaller integers.
@@ -678,54 +697,28 @@ This makes the model file dramatically smaller and faster to run, but there's a 
 -->
 
 ---
-layout: section
----
 
-# Finding and Choosing Models
-
-<!--
-Okay, so you have the tools, you understand the basics of quantization. Now for the fun part: where do you find all these models?
--->
-
----
-layout: two-cols
----
-
-## Cloud Inference Providers
-
-If you don't want to run models locally, these services provide APIs for hundreds of different open and proprietary models.
-
-![OpenRouter Logo](/openrouter.svg){class="m-auto"}
+![OpenRouter Logo](/openrouter.svg){style="height:80px"}
 
 [openrouter.ai/models](https://openrouter.ai/models)
 
-::right::
-
-<br/>
-<br/>
-
-![Vercel AI Gateway](/vercel.svg){class="m-auto"}
+![Vercel AI Gateway](/vercel.svg){style="height:60px"}
 
 [vercel.com/ai-gateway/models](https://vercel.com/ai-gateway/models)
+
+![Nvidia NIM](/nvidia.svg){style="height:60px"}
+
+[build.nvidia.com/models](https://build.nvidia.com/models)
 
 
 <!--
 Finally, what if you want the variety of open models without the hassle of running them yourself?
 
-There's a growing category of services that I call "meta-APIs". Companies like OpenRouter and Vercel host dozens of open and closed models, all accessible through a single, unified API. You can switch from a Mistral model to a Llama model to a Qwen model just by changing one parameter in your API call. It's the best of both worlds: access and convenience.
+There's a growing category of services that I call "meta-APIs". Companies like OpenRouter and Vercel host dozens of open and closed models, and Nvidia hosts quite a few open models, with a generous free request limit of 40 requests per minute.
 -->
 
 ---
-layout: default
+layout: end
 ---
 
-# Thank You
-
-**Questions?**
-
-<!--
-That's a whirlwind tour of the world beyond the big, proprietary LLMs. We've seen why small, open, and local models are so powerful, and we've looked at the tools you need to get started.
-
-I hope this has inspired you to download a model and give it a try. Thank you. I'd be happy to take any questions.
--->
-```
+## Thank You
