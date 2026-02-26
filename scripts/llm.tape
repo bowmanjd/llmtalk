@@ -8,27 +8,27 @@ Sleep 1s
 Enter
 Sleep 4s
 Type "ab"
-Sleep 1s
-Enter
 Sleep 2s
+Enter
+Sleep 3s
 Type "bc"
-Sleep 1s
-Enter
 Sleep 2s
+Enter
+Sleep 3s
 Type "aa"
-Sleep 1s
-Enter
 Sleep 2s
+Enter
+Sleep 3s
 Type "cc"
-Sleep 1s
-Enter
 Sleep 2s
+Enter
+Sleep 3s
 Type "ca"
-Sleep 1s
-Enter
 Sleep 2s
+Enter
+Sleep 3s
 Type "bb"
-Sleep 1s
-Enter
 Sleep 2s
+Enter
+Sleep 3s
 

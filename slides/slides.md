@@ -268,7 +268,7 @@ layout: two-cols
 
 ## vLLM, SGLang
 
-For production deployments in which VRAM is abundant and you have many users, you may want to seriously consider the well-trusted vLLM or the relative newcomer SGLang.
+For production deployments in which VRAM is abundant and you have many users, you may want to seriously consider the well-trusted vLLM or SGLang.
 
 ::right::
 
@@ -286,7 +286,7 @@ backgroundSize: contain
 ---
 
 <!--
-MLX for Apple Silicon -- I am about to recommend llama.cpp for everything, but I will say, in my testing, if you want raw tokens per second, MLX is faster than llama.cpp, even thought llama.cpp does have Metal support. Maybe I wasn't holding it right, but the Internet would suggest it is something to consider.
+MLX for Apple Silicon -- I am about to recommend llama.cpp for everything, but I will say, in my testing, if you want raw tokens per second, MLX is faster than llama.cpp, even though llama.cpp does have Metal support.
 -->
 
 ---
@@ -326,7 +326,6 @@ unsloth/Qwen3-4B-Instruct-2507-GGUF:Q4_K_M \
 4.  Chat away!
 
 <!--
-
 I like llama.cpp because it is fast, optimized for CPU only, gives you direct control. It is the engine that is hiding behind tools like Ollama or LM Studio.
 -->
 
@@ -415,7 +414,7 @@ The Open Model Store
 [hf.co](https://hf.co)
 
 <!--
-In my hometown there was this variety store called Glen's Fair Priced Store. It had a hard to define range of goods. Pro photographers went there to get their equipment, as did kids to find halloween costumes. There were layers upon layers of things for sale on the shelves. You had to move things around to even figure out what was there, and then you still might not be sure what you were looking at. You have probably walked into wonderful stores like this. Now imagine such a store, except almost everything is free. That is Hugging Face. Scholarly papers, models, information about models, even inference (costs associated). For today's discussion, let's just focus on downloadable model weights
+In my hometown there was this variety store called Glen's Fair Priced Store. It had a hard to define range of goods. Pro photographers went there to get their equipment, as did kids to find Halloween costumes. There were layers upon layers of things for sale on the shelves, some quality things and some that were more suspicious. You had to move things around to even figure out what was there, and then you still might not be sure what you were looking at. You have probably walked into wonderful stores like this. Now imagine such a store, except almost everything is free. That is Hugging Face. Scholarly papers, models, information about models, even inference (costs associated). For today's discussion, let's just focus on downloadable model weights
 -->
 
 ---
@@ -472,10 +471,19 @@ There are many ways of packaging models. A "library" on HF refers to the ML fram
 
 ---
 
+## 🎵 Tunes
+
+Models often are denoted with "instruct" or "it" to indicate they are instruction-tuned -- this is usually the behavior you want; avoid "base" models.
+
+Sometimes there are "thinking" variants.
+
+You can also find models tuned for reranking, embedding, tool-calling, and other specific tasks.
+
+---
+
 ## Parameters
 
-
-The learned weights and biases that define how the model processes language, the number of "dials and switches" tuned during training to determine the weight of influence between input and output token. How likely is "happy" to be followed by "birthday"?
+The learned weights and biases that define how the model processes language, the number of "dials and switches" tuned during training to determine the weight of influence between input and output token. How likely is "hello" to be followed by "world"?
 
 ---
 
@@ -496,6 +504,10 @@ def decode(predicted_index):
 	return VOCAB[predicted_index.item()]
 ```
 
+<!--
+Let's build a tiny model now to demonstrate the concept of parameters and weights. Here is the tokenizer. Our model understands 3 tokens: abc
+-->
+
 ---
 
 ```python
@@ -515,6 +527,10 @@ def infer(input_vector):
 	return torch.argmax(logits)
 ```
 
+<!--
+Here are the weights, and the inference function. Each of these weights is a parameter that can be tuned to indicate what token should follow what token.
+-->
+
 ---
 
 ```python
@@ -526,13 +542,15 @@ if __name__ == "__main__":
 		print(decode(prediction))
 ```
 
+<!-- And here is our user interface, that chatbot loop -->
+
 ---
 layout: image
 image: /machine_learning.png
 backgroundSize: contain
 ---
 
-<!-- The pile gets soaked with data and starts to get mushy over time, so it's technically recurrent. -->
+<!-- Let's tune our model to behave in useful ways. Just a reminder here of how machine learning works. (If asked: The pile gets soaked with data and starts to get mushy over time, so it's technically recurrent.) -->
 
 ---
 
@@ -608,6 +626,12 @@ backgroundSize: contain
 ```
 ````
 
+<!--
+In our case, the weights are a matrix showing each token's relationship to every other token. (click through each to show desired next token prediction.) For a given token, I am putting weight on the two tokens that I want to predict that letter.
+-->
+
+---
+layout: center
 ---
 
 <SlidevVideo v-click autoplay autoreset='click'>
@@ -633,7 +657,7 @@ And there you have it: artificial general intelligence! We have arrived.
 - Above is an 18 parameter model (18 adjustable values)
 - These are "the model weights"
 - Smallest model I have used: 270M parameters
-- Largest I can run on my hardware: 30B parameters
+- Largest I have run on my hardware: 30B parameters
 - Good size for a laptop with 16GB RAM: 4B parameters
 - Flagship proprietary models are likely in trillions
 
@@ -687,13 +711,51 @@ INT4 Weight: 0.8125
 Integers are dequantized back to floats with some loss of precision (rounding).
 
 <!--
-Model weights that have had precision reduced from 32-bit or 16-bit floats to, say, 8-bit, 4-bit, or even smaller integers.
+Model weights that have had precision reduced from 16-bit floats to, say, 8-bit, 4-bit, or even smaller integers.
 
-Think of quantization as lossy compression for AI models, like converting a massive WAV audio file to a much smaller MP3.
-
-The original model weights are stored as high-precision numbers, like 16-bit floating points. Quantization converts them to lower-precision numbers, like 4-bit integers.
+Think of quantization as lossy compression for AI models, like converting a massive WAV audio file to a much smaller MP3, or a raw bitmap photo to JPEG or PNG.
 
 This makes the model file dramatically smaller and faster to run, but there's a trade-off. As you can see here, when you convert back and forth, you lose a tiny bit of the original information due to rounding. The magic is that for most language models, you can do this quite aggressively without a noticeable drop in quality.
+-->
+
+---
+
+- K-Quants: Modern standard
+- I-Quants: extreme low-bit compression for GPU
+- Suffixes (S/M/L): Mixed precision for accuracy
+- Q8_0: near-lossless
+- Q6_K: Uncompromising model quality.
+- Q4_K_M: Good balance
+- IQ3 / IQ2: Use only when VRAM is tight
+- CPU Users: Stick to K-quants
+
+<!--
+Experiment! Models quantize differently. Test - make a "sniff" test and a suite
+-->
+
+---
+
+## unsloth/Qwen3.5-35B-A3B-GGUF
+
+<v-clicks>
+
+- Community: Unsloth
+- Model: Qwen 3.5
+- Parameters: 35 billion
+- Activated Parameters: 3 Billion
+- File format for llama.cpp
+- Which quant? Q4_K_M is a good start
+
+</v-clicks>
+
+---
+layout: image
+image: /cloud-gpu.svg
+backgroundSize: contain
+---
+
+<!--
+Self hosting models could happen on rented hardware... here are some options. A little frightening.
 -->
 
 ---
@@ -715,10 +777,45 @@ This makes the model file dramatically smaller and faster to run, but there's a 
 Finally, what if you want the variety of open models without the hassle of running them yourself?
 
 There's a growing category of services that I call "meta-APIs". Companies like OpenRouter and Vercel host dozens of open and closed models, and Nvidia hosts quite a few open models, with a generous free request limit of 40 requests per minute.
+
+I highly recommend OpenRouter. It has a number of free models with daily limits. It can also serve as a catalog of inference providers. If you find a particular inference provider you like, such as Fireworks, or SambaNova, or Baseten, or Cloudflare -- you can compare, decide, and then go directly to that provider and purchase inference.
 -->
 
 ---
-layout: end
+layout: center
 ---
 
-## Thank You
+<SlidevVideo v-click autoplay autoreset='click'>
+  <source src="/local.webm" type="video/webm" />
+</SlidevVideo>
+
+<!-- local cpu on my laptop -->
+
+---
+layout: center
+---
+
+<SlidevVideo v-click autoplay autoreset='click'>
+  <source src="/gpu.webm" type="video/webm" />
+</SlidevVideo>
+
+<!-- gpu in our basement, RTC 3080 Ti -->
+
+---
+layout: center
+---
+
+<SlidevVideo v-click autoplay autoreset='click'>
+  <source src="/cloud.webm" type="video/webm" />
+</SlidevVideo>
+
+<!-- gpu in our basement, RTC 3080 Ti -->
+
+
+---
+layout: center
+---
+
+<SlidevVideo v-click autoplay autoreset='click'>
+  <source src="/conclusion.webm" type="video/webm" />
+</SlidevVideo>
