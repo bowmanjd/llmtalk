@@ -56,6 +56,7 @@ layout: two-cols
 - Deepseek V3.2
 - GLM 5 (Z.ai)
 - Gemma 3 4/12/27B (Google)
+- gpt-oss (OpenAI)
 - Granite 4.0 Micro/Tiny/Small (IBM)
 - Kimi K2.5 (Moonshot AI)
 - LFM 2.5-1.2B (Liquid AI)
@@ -73,7 +74,8 @@ layout: two-cols
 - Nemotron 3 Nano 30B A3B (Nvidia)
 - Phi 4 (Microsoft)
 - Qwen3.5 397B A17B (Alibaba)
-- gpt-oss (OpenAI)
+- Step 3.5 Flash (StepFun)
+- Tiny Aya (Cohere)
 
 </v-clicks>
 
@@ -116,6 +118,12 @@ Related but not Equal:
 Today we are talking about these potentially overlapping qualities. If you want to self-host, then you need an open model, and probably a pretty small model. But just because a model is open doesn't mean you can self-host it realistically, and just because a model is small doesn't mean it is small enough to run in any usable way on your hardware. But there are small open models that any of you can self-host, and there are probably applications and activities in which even those very small models are desirable.
 
 -->
+
+---
+layout: section
+---
+
+## Why Open/Small/Local?
 
 ---
 layout: image-right
@@ -349,7 +357,7 @@ To start out, I recommend giving Qwen 3 4B Instruct a try. It is small enough to
 layout: two-cols
 ---
 
-## Web Clients
+## Web
 
 - `llama-server` (llama.cpp)
 - Open-WebUI
@@ -357,7 +365,7 @@ layout: two-cols
 
 ::right::
 
-## CLI Clients
+## Command-line
 
 - OpenCode
 - Pi
@@ -657,7 +665,7 @@ And there you have it: artificial general intelligence! We have arrived.
 - Above is an 18 parameter model (18 adjustable values)
 - These are "the model weights"
 - Smallest model I have used: 270M parameters
-- Largest I have run on my hardware: 30B parameters
+- Largest I have run on my hardware: 35B parameters
 - Good size for a laptop with 16GB RAM: 4B parameters
 - Flagship proprietary models are likely in trillions
 
@@ -799,7 +807,7 @@ layout: center
   <source src="/gpu.webm" type="video/webm" />
 </SlidevVideo>
 
-<!-- gpu in our basement, RTC 3080 Ti -->
+<!-- gpu in our basement, RTx 3080 Ti -->
 
 ---
 layout: center
@@ -809,8 +817,7 @@ layout: center
   <source src="/cloud.webm" type="video/webm" />
 </SlidevVideo>
 
-<!-- gpu in our basement, RTC 3080 Ti -->
-
+<!-- Similar but larger model on OpenRouter -->
 
 ---
 layout: center
